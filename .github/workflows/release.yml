@@ -1,0 +1,65 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        
+    - name: Build executable with PyInstaller
+      run: |
+        pyinstaller --onefile --windowed --name Base64Tool b64_tool.py
+        
+    - name: Create release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/Base64Tool.exe
+        name: Release ${{ github.ref_name }}
+        body: |
+          ## Base64 Tool ${{ github.ref_name }}
+          
+          A clean, minimal desktop GUI application for Base64 encoding and decoding.
+          
+          ### Features:
+          - Clean dark-mode interface using CustomTkinter
+          - Large input/output text fields
+          - One-click encode/decode functionality
+          - Copy to clipboard feature
+          - Error handling for invalid Base64 strings
+          
+          ### Download:
+          - **Windows**: `Base64Tool.exe` (single executable, no installation required)
+          
+          ### Usage:
+          1. Download `Base64Tool.exe` from the assets below
+          2. Run the executable
+          3. Enter text in the Input field
+          4. Click "Encode" or "Decode"
+          5. Copy the result using "Copy to Clipboard"
+          
+          ### Building from source:
+          ```bash
+          # Install dependencies
+          pip install -r requirements.txt
+          
+          # Build executable
+          pyinstaller --onefile --windowed --name Base64Tool b64_tool.py
+          ```
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
