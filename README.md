@@ -5,8 +5,11 @@ A clean, minimal desktop GUI application for Base64 encoding and decoding. Built
 ## Features
 
 - **Clean dark-mode interface** using CustomTkinter
-- **Large input/output text fields** for easy text manipulation
-- **One-click encode/decode functionality** with intuitive buttons
+- **Base64 encoding/decoding** with large input/output text fields
+- **RSA encryption/decryption** with 2048-bit key generation
+- **Two-tab interface** for Base64 and RSA operations
+- **Scrollable RSA tab** for better UX
+- **One-click functionality** with intuitive buttons
 - **Copy to clipboard feature** for quick result sharing
 - **Error handling** that shows helpful messages instead of crashing
 - **Single executable** - no installation required

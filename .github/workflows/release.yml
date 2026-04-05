@@ -32,32 +32,34 @@ jobs:
         files: dist/Base64Tool.exe
         name: Release ${{ github.ref_name }}
         body: |
-          ## Base64 Tool ${{ github.ref_name }}
+          ## Base64 & RSA Tool ${{ github.ref_name }}
           
-          A clean, minimal desktop GUI application for Base64 encoding and decoding.
+          A clean, minimal desktop GUI application for Base64 encoding/decoding and RSA encryption/decryption.
           
           ### Features:
           - Clean dark-mode interface using CustomTkinter
-          - Large input/output text fields
-          - One-click encode/decode functionality
+          - Base64 encoding/decoding with large input/output text fields
+          - RSA encryption/decryption with 2048-bit key generation
+          - Two-tab interface for Base64 and RSA operations
+          - Scrollable RSA tab for better UX
+          - One-click encode/decode and encrypt/decrypt functionality
           - Copy to clipboard feature
-          - Error handling for invalid Base64 strings
+          - Error handling for invalid inputs
           
           ### Download:
           - **Windows**: `Base64Tool.exe` (single executable, no installation required)
           
           ### Usage:
-          1. Download `Base64Tool.exe` from the assets below
+          1. Download `Base64Tool.exe` from assets below
           2. Run the executable
-          3. Enter text in the Input field
-          4. Click "Encode" or "Decode"
-          5. Copy the result using "Copy to Clipboard"
+          3. **Base64 Tab**: Enter text, click "Encode" or "Decode"
+          4. **RSA Tab**: Generate keys, enter text, click "Encrypt" or "Decrypt"
+          5. Copy results using "Copy to Clipboard"
           
           ### Building from source:
           ```bash
           # Install dependencies
           pip install -r requirements.txt
-          
           # Build executable
           pyinstaller --onefile --windowed --name Base64Tool b64_tool.py
           ```

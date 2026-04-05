@@ -1,9 +1,6 @@
 import base64
 import customtkinter as ctk
-import tkinter as tk
-from tkinter import messagebox
 import pyperclip
-import json
 from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.backends import default_backend
@@ -205,7 +202,7 @@ class Base64Tool:
             self.b64_output_text.insert("1.0", decoded)
             self.hide_error()
         except Exception:
-            self.show_error("Fehler: Ungültiger Base64-String!")
+            self.show_error("Error: Invalid Base64 string!")
     
     def copy_to_clipboard(self):
         """Copy output text to clipboard"""
