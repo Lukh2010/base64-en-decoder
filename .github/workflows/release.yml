@@ -24,12 +24,12 @@ jobs:
         
     - name: Build executable with PyInstaller
       run: |
-        pyinstaller --onefile --windowed --name Base64Tool b64_tool.py
+        pyinstaller --onefile --windowed --name en_decoder b64_tool.py
         
     - name: Create release
       uses: softprops/action-gh-release@v1
       with:
-        files: dist/Base64Tool.exe
+        files: dist/en_decoder.exe
         name: Release ${{ github.ref_name }}
         body: |
           ## Base64 & RSA Tool ${{ github.ref_name }}
@@ -47,10 +47,10 @@ jobs:
           - Error handling for invalid inputs
           
           ### Download:
-          - **Windows**: `Base64Tool.exe` (single executable, no installation required)
+          - **Windows**: `en_decoder.exe` (single executable, no installation required)
           
           ### Usage:
-          1. Download `Base64Tool.exe` from assets below
+          1. Download `en_decoder.exe` from assets below
           2. Run the executable
           3. **Base64 Tab**: Enter text, click "Encode" or "Decode"
           4. **RSA Tab**: Generate keys, enter text, click "Encrypt" or "Decrypt"
@@ -61,7 +61,7 @@ jobs:
           # Install dependencies
           pip install -r requirements.txt
           # Build executable
-          pyinstaller --onefile --windowed --name Base64Tool b64_tool.py
+          pyinstaller --onefile --windowed --name en_decoder b64_tool.py
           ```
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
